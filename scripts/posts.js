@@ -76,7 +76,7 @@ $(document).ready(function () {
   //Search funcionality
   $("#searchbar")
     .autocomplete({
-      minLength: 0,
+      autoFocus: false,
       source: posts,
       select: (event, data) => {
           $(".post-container").empty();
@@ -88,14 +88,13 @@ $(document).ready(function () {
               data.item.postText
             )
           );
-          $(this).val("");
+              
           $(event.target).blur();
+          this.value = "";
           return false;
       },
     })
-    .focus(function () {
-      $(this).autocomplete("search");
-    });
+    
 
   loadPosts();
 });
